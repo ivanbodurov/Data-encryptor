@@ -1,7 +1,17 @@
 <?php
-$string_to_md5 = md5($_POST['strtomd5']);
-$string_to_sha1 = sha1($_POST['strtosha1']);
-$string_to_sha512 = hash('sha512',$_POST['strtosha512']);
+if (isset($_POST['strtomd5'])) {
+  $string_to_md5 = md5($_POST['strtomd5']);
+}
+
+if (isset($_POST['strtosha1'])) {
+  $string_to_sha1 = sha1($_POST['strtosha1']);
+}
+
+if (isset($_POST['strtosha512'])) {
+  $string_to_sha512 = hash('sha512',$_POST['strtosha512']);
+}
+
+
 
 ?>
 
@@ -9,7 +19,11 @@ $string_to_sha512 = hash('sha512',$_POST['strtosha512']);
 function encrypt_decrypt($string, $action)
 {
     $encrypt_method = 'AES-256-CBC-HMAC-SHA256';
-    $passphrase = substr(hash('sha512', $_POST['passphrase']), 10, 100);
+
+    if (isset($_POST['passphrase'])) {
+      $passphrase = substr(hash('sha512', $_POST['passphrase']), 10, 100);
+    }
+    
     $iv = '2fgf5KJ8g29';
     //$passphrase = 'AA74CDCC2BBRT935136HH7B63C27'; // user defined passphrase
     //$passphrase = hash('sha512', $passphrase);
@@ -27,8 +41,16 @@ function encrypt_decrypt($string, $action)
       return '<span style="color: #c13232;">Invalid data!</span>';
     }
 }
-$data_to_encrypt = encrypt_decrypt($_POST['data_to_encrypt'], 'encrypt');
-$data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
+
+if (isset($_POST['data_to_encrypt'])) {
+  $data_to_encrypt = encrypt_decrypt($_POST['data_to_encrypt'], 'encrypt');
+}
+
+if (isset($_POST['data_to_decrypt'])) {
+  $data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
+}
+
+
 
 
 
