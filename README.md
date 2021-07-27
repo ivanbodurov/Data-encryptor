@@ -1,2 +1,2 @@
 # Data-encryptor
-My data encryptor writen in PHP7.4
+My data encryptor written in PHP7.4
