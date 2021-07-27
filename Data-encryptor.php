@@ -84,6 +84,7 @@ $data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
         background-color: lightgreen;
         text-indent: 10px;
         overflow: auto;
+        resize: none;
       }
 
       .string_to_md5, .string_to_sha1, .string_to_sha512, .encrypt_string, .decrypt_string {
@@ -191,9 +192,8 @@ $data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
           <?php
             if (isset($_POST['data_to_encrypt'])) { ?>
               <label for="str_encrypt">Result:</label>
-              <div id="str_encrypt" class="result w-100">
-                <?=(isset($_POST['data_to_encrypt']))?$data_to_encrypt:''?>
-              </div>
+              <?=(isset($_POST['data_to_encrypt']))?'<textarea id="str_encrypt" class="result w-100" readonly>'.$data_to_encrypt.'</textarea>':''?>
+
           <?php } ?>
         </div>
       </div>
@@ -218,9 +218,9 @@ $data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
           <?php
             if (isset($_POST['data_to_decrypt'])) { ?>
               <label for="str_decrypt">Result:</label>
-              <div id="str_decrypt" class="result w-100">
-                <?=(isset($_POST['data_to_decrypt']))?$data_to_decrypt:'';?>
-              </div>
+
+                <?=(isset($_POST['data_to_decrypt']))?'<textarea id="str_decrypt" class="result w-100" readonly>'.$data_to_decrypt.'</textarea>':'';?>
+
           <?php } ?>
         </div>
       </div>
