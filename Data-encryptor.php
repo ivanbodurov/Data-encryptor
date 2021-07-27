@@ -24,7 +24,7 @@ function encrypt_decrypt($string, $action)
     if ($output) {
       return $output;
     } else {
-      return "Invalid data!";
+      return '<span style="color: #c13232;">Invalid data!</span>';
     }
 }
 $data_to_encrypt = encrypt_decrypt($_POST['data_to_encrypt'], 'encrypt');
@@ -82,9 +82,10 @@ $data_to_decrypt = encrypt_decrypt($_POST['data_to_decrypt'], 'decrypt');
         border-radius: 10px;
         border: 2px solid grey;
         background-color: lightgreen;
-        /* word-wrap: break-word; */
+        text-indent: 10px;
         overflow: auto;
       }
+
       .string_to_md5, .string_to_sha1, .string_to_sha512, .encrypt_string, .decrypt_string {
         border-radius: 10px;
         border: 3px ridge brown;
